@@ -1,0 +1,19 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+body {
+  min-height: 100vh;
+}
+
+table,
+th,
+td {
+  border: 1px solid #c0c0c0;
+}
+.close_btn {
+  display: flex;
+  justify-content: center;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
