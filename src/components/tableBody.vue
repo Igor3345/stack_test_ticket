@@ -30,10 +30,7 @@ import pagination from './pagination.vue'
       </table>
       <pagination />
     </div>
-    <modals 
-    :toggle="toggleModal" 
-    :checkInputs="checkInputs" 
-    />
+    <modals />
   </main>
 </template>
 
