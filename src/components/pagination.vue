@@ -20,7 +20,7 @@ const pageChange = inject('pageChange');
         <button class="btn btn-primary btn-sm" :disabled="page === Math.ceil(allItems/4)" data-page = "next" :data-limit = "Math.ceil(allItems/4)" @click = pageChange ><icons class="bi-arrow-right" color="#fff" /></button>
     </div>
 </template>
-<style scoped>
+<style>
 .pagination{
     align-items: center;
     justify-content: flex-end;

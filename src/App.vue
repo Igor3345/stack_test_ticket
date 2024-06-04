@@ -14,6 +14,7 @@ let allItems = ref();
 let sort = "";
 let filter="";
 let pageNum = 1;
+const modalValues = {"phoneNum":"","own":"", "org":""};
 
 provide("page" , page);
 provide("modalDisabled" , modalDisabled);
@@ -80,8 +81,6 @@ function toggleModal(){
   modalValues.org = "";
 }
 
-const modalValues = {"phoneNum":"","own":"", "org":""};
-
 function checkInputs(e){
   let target = e.target;
   modalValues[target.name] = e.target.value;
@@ -106,13 +105,12 @@ function sortItems(e){
 
 function pageChange(e){
 let taget = e.target.getAttribute('data-page');
-let limit = e.target.getAttribute('data-limit');
 
-if(taget == "next" && pageNum < limit){
+if(taget == "next"){
   pageNum++;
   update(sort,filter,pageNum);
   page.value = pageNum
-}else if(taget == "prev" && pageNum > 1){
+}else if(taget == "prev"){
   pageNum--;
   update(sort,filter,pageNum);
   page.value = pageNum
