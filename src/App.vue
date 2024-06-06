@@ -14,6 +14,7 @@ let allItems = ref();
 let sort = "";
 let filter="";
 let pageNum = 1;
+let pageLimit;
 const modalValues = {"phoneNum":"","own":"", "org":""};
 
 provide("page" , page);
@@ -55,10 +56,16 @@ axios.post("https://4430e6b349c7b094.mokky.dev/clients" , newData).then(resp => 
 }
 
 async function update(sort, filter , updatePage){
-  let page = updatePage ? updatePage : 1;
-  const {data} = await axios.get("https://4430e6b349c7b094.mokky.dev/clients?page="+page+"&limit=4"+sort+filter);
+  let UPage = updatePage ? updatePage : 1;
+  const {data} = await axios.get("https://4430e6b349c7b094.mokky.dev/clients?page="+UPage+"&limit=4"+sort+filter);
   clients.value = data.items;
   allItems.value = data.meta.total_items;
+  pageLimit = data.meta.total_pages;
+
+  if(pageNum > pageLimit){
+    pageNum = pageLimit;
+    page.value = pageLimit;
+  }
   return data
 }
 
